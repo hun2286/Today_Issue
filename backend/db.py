@@ -1,15 +1,15 @@
 import mysql.connector
 from mysql.connector import Error
 
-def get_db_connection():
+def get_connection():
     try:
-        conn = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            password="설정한비밀번호",  # 설치 시 입력한 비밀번호
-            database="diary_db"
+        connection = mysql.connector.connect(
+            host='localhost',          # MySQL 호스트
+            database='diary_db',       # 데이터베이스 이름
+            user='your_username',      # MySQL 계정
+            password='your_password'   # MySQL 비밀번호
         )
-        return conn
+        return connection
     except Error as e:
         print(f"Error: {e}")
         return None
