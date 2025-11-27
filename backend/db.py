@@ -1,15 +1,18 @@
+import os
 import mysql.connector
-from mysql.connector import Error
+from dotenv import load_dotenv
+
+load_dotenv()  # .env 파일 읽기
 
 def get_connection():
     try:
-        connection = mysql.connector.connect(
-            host='localhost',          # MySQL 호스트
-            database='diary_db',       # 데이터베이스 이름
-            user='your_username',      # MySQL 계정
-            password='your_password'   # MySQL 비밀번호
+        conn = mysql.connector.connect(
+            host=os.getenv("DB_HOST", "localhost"),
+            user=os.getenv("DB_USER", "root"),
+            password=os.getenv("DB_PASSWORD", ""),
+            database=os.getenv("DB_NAME", "diary_db")
         )
-        return connection
-    except Error as e:
-        print(f"Error: {e}")
+        return conn
+    except mysql.connector.Error as e:
+        print("DB 연결 실패:", e)
         return None
