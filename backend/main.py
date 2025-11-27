@@ -18,7 +18,7 @@ app.add_middleware(
 @app.post("/diaries/")
 async def create_diary(request: Request):
     data = await request.json()
-    required_fields = ["data", "title", "content", "mode"]
+    required_fields = ["date", "title", "content", "mood"]
     for field in required_fields:
         if field not in data:
             raise HTTPException(status_code=400, detail=f"{field} is required")
@@ -26,7 +26,7 @@ async def create_diary(request: Request):
     conn = db.get_connection()
     cursor = conn.cursor()
     sql = "INSERT INTO diaries (date, title, content, mood) VALUES (%s, %s, %s, %s)"
-    cursor.execute(sql, (data["data"], data["title"], data["content"], data["mode"]))
+    cursor.execute(sql, (data["date"], data["title"], data["content"], data["mood"]))
     conn.commit()
     cursor.close()
     conn.close()
