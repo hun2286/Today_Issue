@@ -1,0 +1,8 @@
+# npm -v
+# node -v 확인
+
+# npm create vite@latest .
+# react 
+# javascript
+# use rolldown-vite -> no
+# install with npm and start now? -> yes
