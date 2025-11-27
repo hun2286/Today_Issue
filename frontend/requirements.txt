@@ -6,3 +6,7 @@
 # javascript
 # use rolldown-vite -> no
 # install with npm and start now? -> yes
+
+axios
+
+# 실행 npm run dev
