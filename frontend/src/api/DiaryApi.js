@@ -1,15 +1,19 @@
+// src/api/DiaryApi.js
 import axios from "axios";
 
-const API_URL = "http://127.0.0.1:8000/diaries/";
+const BASE_URL = "http://localhost:8000/diaries";
 
-// 일기 생성
-export const createDiary = async (diary) => {
-  const res = await axios.post(API_URL, diary);
+export const getDiaries = async () => {
+  const res = await axios.get(BASE_URL + "/");
   return res.data;
 };
 
-// 일기 목록 조회
-export const getDiaries = async () => {
-  const res = await axios.get(API_URL);
+export const createDiary = async (data) => {
+  const res = await axios.post(BASE_URL + "/", data);
+  return res.data;
+};
+
+export const deleteDiary = async (id) => {
+  const res = await axios.delete(`${BASE_URL}/${id}`);
   return res.data;
 };
