@@ -44,7 +44,7 @@ async def create_diary(request: Request):
     conn.commit()
     cursor.close()
     conn.close()
-    return {"message": "생성 성공"}
+    return {"message": "생성 완료"}
 
 # -------------------------------
 # Read All
