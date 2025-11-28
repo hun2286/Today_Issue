@@ -7,38 +7,19 @@ function App() {
   const [refresh, setRefresh] = useState(false);
 
   return (
-    <div
+        <div
       style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center", // 전체 페이지 중앙 정렬
-        justifyContent: "flex-start",
-        minHeight: "100vh",
-        backgroundColor: "#f0f2f5",
-        padding: "40px 20px",
-        boxSizing: "border-box",
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)", // 세로/가로 중앙 이동
+        width: "auto",      // 컨테이너 자체 크기는 그대로
+        minWidth: "600px",  // 원하면 최소 너비
       }}
     >
-      <h1 style={{ textAlign: "center", color: "black", marginBottom: "20px" }}>Diary App</h1>
-      
-      <div
-        style={{
-          width: "100%",
-          maxWidth: "600px", // 화면 크기 제한
-          marginBottom: "30px",
-        }}
-      >
-        <DiaryForm onSuccess={() => setRefresh(!refresh)} />
-      </div>
-
-      <div
-        style={{
-          width: "100%",
-          maxWidth: "600px", // 화면 크기 제한
-        }}
-      >
-        <DiaryList refresh={refresh} />
-      </div>
+      <h1 style={{ textAlign: "center", marginBottom: "20px" }}>Diary App</h1>
+      <DiaryForm onSuccess={() => setRefresh(!refresh)} />
+      <DiaryList refresh={refresh} onDelete={() => setRefresh(!refresh)} />
     </div>
   );
 }
