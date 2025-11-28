@@ -44,7 +44,7 @@ async def create_diary(request: Request):
     conn.commit()
     cursor.close()
     conn.close()
-    return {"message": "Diary created successfully"}
+    return {"message": "생성 성공"}
 
 # -------------------------------
 # Read All
@@ -72,7 +72,7 @@ def get_diary(diary_id: int):
     conn.close()
     if result:
         return result
-    raise HTTPException(status_code=404, detail="Diary not found")
+    raise HTTPException(status_code=404, detail="다이어리 없음")
 
 # -------------------------------
 # Update
@@ -102,7 +102,7 @@ async def update_diary(diary_id: int, body: DiaryUpdate):
     conn.commit()
     cursor.close()
     conn.close()
-    return {"message": "Diary updated successfully"}
+    return {"message": "업데이트 완료"}
 
 # -------------------------------
 # Delete
@@ -115,4 +115,4 @@ def delete_diary(diary_id: int):
     conn.commit()
     cursor.close()
     conn.close()
-    return {"message": "Diary deleted successfully"}
+    return {"message": "삭제 완료"}
